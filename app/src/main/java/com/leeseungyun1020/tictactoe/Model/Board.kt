@@ -1,7 +1,9 @@
 package com.leeseungyun1020.tictactoe.Model
 
 enum class Team {
-    X, O, U
+    X, O, U {
+        override fun toString() = ""
+    }
 }
 
 data class Cell(var team: Team, var count: Int = 0)
@@ -27,7 +29,7 @@ class Board {
     }
 
     fun mark(x: Int, y: Int) {
-        if (cells[x][y].team == Team.U) {
+        if (cells[x][y].team == Team.U && winner == Team.U) {
             count++
             cells[x][y].team = turn
             cells[x][y].count = count
